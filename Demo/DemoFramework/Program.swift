@@ -82,7 +82,7 @@ public final class Program<Model, Msg: Message>
 /// // let program = Program(model: .initial, update: update, view: view)
 /// let program = debugProgram(debug: false, model: .initial, update: update, view: view)
 /// ```
-public func debugProgram<Model: VTreeDebugger.DebuggableModel, Msg: Message>(
+public func debugProgram<Model: VTreeDebugger.DebuggableModel, Msg>(
     debug: Bool = false,    // Flag for border-color & logging.
     model: Model,
     update: @escaping (Model, Msg) -> Model?,

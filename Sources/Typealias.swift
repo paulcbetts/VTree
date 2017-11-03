@@ -28,6 +28,6 @@
     public typealias Button = NSButton
 
     public typealias GestureRecognizer = NSGestureRecognizer
-    public typealias GestureState = NSGestureRecognizerState
+    public typealias GestureState = NSGestureRecognizer.State
 
 #endif

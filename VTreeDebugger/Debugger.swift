@@ -71,7 +71,7 @@ public func debugUpdate<Model: DebuggableModel, Msg: Message>(_ update: @escapin
 }
 
 /// Wrapper of `view`.
-public func debugView<Model: DebuggableModel, Msg: Message, T: VTree>(_ view: @escaping (Model) -> T) -> (DebugModel<Model, Msg>) -> AnyVTree<DebugMsg<Msg>>
+public func debugView<Model: DebuggableModel, Msg, T: VTree>(_ view: @escaping (Model) -> T) -> (DebugModel<Model, Msg>) -> AnyVTree<DebugMsg<Msg>>
     where T.MsgType == Msg
 {
     return { debugModel in

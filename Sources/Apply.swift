@@ -3,7 +3,7 @@
     private let _scale = UIScreen.main.scale
 #elseif os(macOS)
     import AppKit
-    private let _scale = NSScreen.main()!.backingScaleFactor
+    private let _scale = NSScreen.main!.backingScaleFactor
 #endif
 
 /// Apply `Patch` (generated from `diff()`) to the existing real `View`.
@@ -13,7 +13,7 @@
 ///     This reuse also occurs when `view`'s property changed or it's childrens are changed.
 ///   - New view (replaced)
 ///   - `nil` (removed)
-public func apply<Msg: Message>(patch: Patch<Msg>, to view: View) -> View?
+public func apply<Msg>(patch: Patch<Msg>, to view: View) -> View?
 {
     let patchIndexes = patch.steps.map { $0.key }.sorted()
     let indexedViews = _indexViews(view, patchIndexes)
@@ -45,7 +45,7 @@ public func apply<Msg: Message>(patch: Patch<Msg>, to view: View) -> View?
 ///   - new view, i.e. `.some(.some(newView))`
 ///   - removed, i.e. `.some(.none)`
 ///   - same view (reused), i.e. `.none`
-private func _applyStep<Msg: Message>(_ step: PatchStep<Msg>, to view: View) -> View??
+private func _applyStep<Msg>(_ step: PatchStep<Msg>, to view: View) -> View??
 {
     switch step {
         case let .replace(newTree):
